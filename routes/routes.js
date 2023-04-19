@@ -2,23 +2,23 @@ const express = require("express");
 const router = express.Router();
 
 const {
-  getItem,
-  addItem,
-  getItemId,
-  deleteItem,
-  updateItem,
+  getBlog,
+  addBlog,
+  getBlogId,
+  deleteBlog,
+  updateBlog,
   login
 } = require("../controllers/blogs");
 
-router.get("/", getItem);
+router.get("/", getBlog);
 
-router.post("/", addItem);
+router.post("/", addBlog);
 
-router.get("/:id", getItemId);
+router.get("/:id", getBlogId);
 
-router.delete("/:id", deleteItem);
+router.delete("/:id", deleteBlog);
 
-router.put("/:id", updateItem);
+router.put("/:id", updateBlog);
 
 router.post("/login", login);
 

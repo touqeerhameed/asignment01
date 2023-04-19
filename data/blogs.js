@@ -1,4 +1,4 @@
-  const itemData = [
+  const blogData = [
    {
      "reference": "00001",
      "title": "Title Test",
@@ -20,4 +20,4 @@
    }
  ]
 
- module.exports=itemData  ;
+ module.exports=blogData  ;

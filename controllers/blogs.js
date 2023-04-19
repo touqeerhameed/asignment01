@@ -5,13 +5,13 @@ const blog = require("../data/blogs");
 const bcrypt = require('bcrypt');
 const jwt = require("jsonwebtoken")
 
-let itemData = [];
+let blogData = [];
 
-const getItem = (req, res) => {
+const getBlog = (req, res) => {
   res.json(blog);
 };
 
-const addItem = async (req, res) => {
+const addBlog = async (req, res) => {
   const item = req.body;
   const hashedPassword = await bcrypt.hash(req.body.reference, 10);
   blog.push({ ...item, reference: hashedPassword, id: v4() });
@@ -49,21 +49,21 @@ function generateAccessToken(user) {
 
   return jwt.sign(user, 'SECRET', { expiresIn: "15m" })
 }
-const getItemId = (req, res) => {
+const getBlogId = (req, res) => {
   const { id } = req.params;
   const itemFound = blog.find((item) => item.id === id);
   console.log(itemFound);
   res.send(itemFound);
 };
 
-const deleteItem = (req, res) => {
+const deleteBlog = (req, res) => {
   const { id } = req.params;
-  itemData = blog.filter((item) => item.id !== id);
-  console.log(itemData);
+  blogData = blog.filter((item) => item.id !== id);
+  console.log(blogData);
   res.send(`Item with id ${id} has been deleted successfully.`);
 };
 
-const updateItem = (req, res) => {
+const updateBlog= (req, res) => {
   const { id } = req.params;
   const { name, toppings, price } = req.body;
 
@@ -78,5 +78,5 @@ const updateItem = (req, res) => {
   );
 };
 
-module.exports = { login, getItem, addItem, getItemId, deleteItem, updateItem };
+module.exports = { login, getBlog, addBlog, getBlogId, deleteBlog, updateBlog };
 //https://medium.com/7span/crud-operation-using-node-js-and-express-js-a0d63a2216aa

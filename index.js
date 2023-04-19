@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 require('./routes/image_routes')(app);
 
-app.use("/items", itemRoutes);
+app.use("/blogs", itemRoutes);
 
 app.listen(port, () => {
   console.log(`Server started at port http://localhost:${port}`);
